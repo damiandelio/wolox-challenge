@@ -1,18 +1,23 @@
 import axios from 'axios'
 
-// const APY_KEY = ''
-const URL_BASE = 'https://jsonplaceholder.typicode.com'
-const URL_COMMENTS = URL_BASE + '/comments'
+const URL_BASE = 'http://private-8e8921-woloxfrontendinverview.apiary-mock.com'
+const URL_LOGIN = URL_BASE + '/login'
+const URL_TECHS = URL_BASE + '/techs'
 
-export const getComments = async ({ postId }) => {
-   const { data } = await axios({
-      method: 'get',
-      url: URL_COMMENTS,
-      headers: {},
-      params: {
-         postId
+export const logIn = ({ email, passwor }) => {
+   return axios({
+      method: 'post',
+      url: URL_LOGIN,
+      data: {
+         email,
+         passwor
       }
    })
+}
 
-   return data
+export const getAllTechs = () => {
+   return axios({
+      method: 'get',
+      url: URL_TECHS
+   })
 }

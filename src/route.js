@@ -5,7 +5,7 @@ import {
    BrowserRouter as Router,
    Switch
 } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { isAuthenticatedState } from './state'
 
 // Pages
@@ -28,7 +28,7 @@ const router = (
 )
 
 function PrivateRoute({ component: Component, ...rest }) {
-   const [isAuthenticated] = useRecoilState(isAuthenticatedState)
+   const isAuthenticated = useRecoilValue(isAuthenticatedState)
 
    return (
       <Route
