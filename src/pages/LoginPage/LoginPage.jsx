@@ -1,18 +1,59 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
+import JSON5 from 'json5'
+import { useRecoilState } from 'recoil'
+import { authenticationState } from '../../state'
 import { logIn } from '../../apiCalls'
 import styles from './LoginPage.module.scss'
 
-const email = 'user@wolox.com.ar'
-const passwor = '12345678'
-
 export default function LoginPage() {
-   useEffect(() => {
-      logIn({ email, passwor })
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
+   const [authentication, setAuthentication] = useRecoilState(
+      authenticationState
+   )
+
+   // saves the user's credentials
+   const authenticate = token => {
+      setAuthentication({
+         email,
+         password,
+         token,
+         isAuthenticated: true
+      })
+   }
+
+   const handleSubmit = e => {
+      e.preventDefault()
+
+      logIn({ email, password })
          .then(res => {
-            console.log(res.data)
+            const { token } = JSON5.parse(res.data)
+            token && authenticate(token)
          })
          .catch(err => console.log(err))
-   }, [])
+   }
 
-   return <>Login</>
+   return (
+      <>
+         <main>
+            <form onSubmit={handleSubmit} className={styles.loginBox}>
+               <label>Email:</label>
+               <input
+                  type='email'
+                  placeholder='email@example.com'
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+               />
+               <label>Password:</label>
+               <input
+                  type='password'
+                  placeholder='password'
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+               />
+               <button type='submit'>Log in</button>
+            </form>
+         </main>
+      </>
+   )
 }

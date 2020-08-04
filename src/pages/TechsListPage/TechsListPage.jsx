@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { getAllTechs } from '../../apiCalls'
-import styles from './TechsListPage.module.scss'
+// import styles from './TechsListPage.module.scss'
 
 export default function TechsListPage() {
    useEffect(() => {

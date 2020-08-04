@@ -6,7 +6,7 @@ import {
    Switch
 } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { isAuthenticatedState } from './state'
+import { authenticationState } from './state'
 
 // Pages
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
@@ -14,6 +14,7 @@ const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'))
 const TechsListPage = lazy(() => import('./pages/TechsListPage/TechsListPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'))
 
+// Routes
 const router = (
    <Router>
       <Suspense fallback={<div>Wait a moment...</div>}>
@@ -27,8 +28,9 @@ const router = (
    </Router>
 )
 
+// if the user isn't logged, redirects to login page
 function PrivateRoute({ component: Component, ...rest }) {
-   const isAuthenticated = useRecoilValue(isAuthenticatedState)
+   const { isAuthenticated } = useRecoilValue(authenticationState)
 
    return (
       <Route
