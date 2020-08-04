@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+
 // Pages
-import HomePage from './pages/HomePage/HomePage'
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'))
 
 const router = (
    <Router>
-      <Switch>
-         <Route exact path='/' component={HomePage} />
-         <Route component={NotFoundPage} />
-      </Switch>
+      <Suspense fallback={<div>Wait a moment...</div>}>
+         <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route component={NotFoundPage} />
+         </Switch>
+      </Suspense>
    </Router>
 )
 
