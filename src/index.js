@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { RecoilRoot } from 'recoil'
 import * as serviceWorker from './serviceWorker'
 import Router from './route'
+
 import './globals.scss'
 
 ReactDOM.render(
-   <React.StrictMode>{Router}</React.StrictMode>,
+   <React.StrictMode>
+      <RecoilRoot>{Router}</RecoilRoot>
+   </React.StrictMode>,
    document.getElementById('root')
 )
 

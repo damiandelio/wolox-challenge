@@ -1,5 +1,12 @@
 import React, { Suspense, lazy } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import {
+   Redirect,
+   Route,
+   BrowserRouter as Router,
+   Switch
+} from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+import { isAuthenticatedState } from './state'
 
 // Pages
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
@@ -13,11 +20,28 @@ const router = (
          <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/login' component={LoginPage} />
-            <Route exact path='/techs-list' component={TechsListPage} />
+            <PrivateRoute exact path='/techs-list' component={TechsListPage} />
             <Route component={NotFoundPage} />
          </Switch>
       </Suspense>
    </Router>
 )
+
+function PrivateRoute({ component: Component, ...rest }) {
+   const [isAuthenticated] = useRecoilState(isAuthenticatedState)
+
+   return (
+      <Route
+         {...rest}
+         render={props =>
+            isAuthenticated ? (
+               <Component {...props} />
+            ) : (
+               <Redirect to='/login' />
+            )
+         }
+      />
+   )
+}
 
 export default router
