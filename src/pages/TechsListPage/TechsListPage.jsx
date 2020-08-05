@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { getAllTechs } from '../../apiCalls'
 import styles from './TechsListPage.module.scss'
 
+const RADIAL_GROUP = 'tech-type'
+
 const FILTER_BACKEND = 'Back-End'
 const FILTER_FRONTEND = 'Front-End'
 const FILTER_MOBILE = 'Mobile'
 const FILTER_ALL = 'FILTER_ALL'
-const RADIAL_GROUP = 'tech-type'
+
+const ORDER_NONE = 'None'
+const ORDER_ASCENDING = 'Ascending'
+const ORDER_DESCENDING = 'Descending'
 
 let originalTechsList = [] // will contain the original list brought from the server
 
@@ -51,8 +56,13 @@ function TechCard({ tech }) {
 function FilterBox({ setTechsList }) {
    const [filterText, setFilterText] = useState('')
    const [filterType, setFilterType] = useState(FILTER_ALL)
+   const [listOrder, setListOrder] = useState(ORDER_NONE)
 
-   const applyFilters = ({ filter = filterType, text = filterText }) => {
+   const applyFilters = ({
+      filter = filterType,
+      text = filterText,
+      order = listOrder
+   }) => {
       // apply text filter in the original techs array
       let result = originalTechsList.filter(el =>
          el.tech.toLowerCase().includes(text.toLowerCase())
@@ -60,6 +70,16 @@ function FilterBox({ setTechsList }) {
       // filters by type
       if (filter !== FILTER_ALL) {
          result = result.filter(el => el.type === filter)
+      }
+
+      if (order !== ORDER_NONE) {
+         result = result.sort((a, b) => {
+            let ret = a.tech < b.tech ? -1 : 1
+            if (order === ORDER_DESCENDING) {
+               ret = -ret
+            }
+            return ret
+         })
       }
 
       setTechsList(result)
@@ -72,9 +92,16 @@ function FilterBox({ setTechsList }) {
    }
 
    const handleRadialGroupChange = e => {
-      let value = e.target.value
+      const value = e.target.value
       setFilterType(value)
       applyFilters({ filter: value })
+   }
+
+   const handleOrderChange = e => {
+      const value = e.target.value
+      console.log(value)
+      setListOrder(value)
+      applyFilters({ order: value })
    }
 
    return (
@@ -115,6 +142,14 @@ function FilterBox({ setTechsList }) {
                <input type='radio' name={RADIAL_GROUP} value={FILTER_MOBILE} />
                Mobile
             </label>
+         </fieldset>
+         <fieldset>
+            <label>Order</label>
+            <select onChange={handleOrderChange}>
+               <option value={ORDER_NONE}>{ORDER_NONE}</option>
+               <option value={ORDER_ASCENDING}>{ORDER_ASCENDING}</option>
+               <option value={ORDER_DESCENDING}>{ORDER_DESCENDING}</option>
+            </select>
          </fieldset>
       </form>
    )

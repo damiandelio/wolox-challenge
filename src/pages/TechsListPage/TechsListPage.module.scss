@@ -11,6 +11,11 @@
       margin-bottom: 0.5rem;
    }
 
+   fieldset {
+      padding: 0;
+      border: none;
+   }
+
    input {
       padding: 0.3rem 0.5rem;
    }
@@ -19,8 +24,6 @@
 .radialGroupContainer {
    display: flex;
    flex-direction: column;
-   padding: 0;
-   border: none;
 
    label {
       padding-top: 1rem;
