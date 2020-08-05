@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { getAllTechs } from '../../apiCalls'
-// import styles from './TechsListPage.module.scss'
+import styles from './TechsListPage.module.scss'
+
+const FILTER_BACKEND = 'Back-End'
+const FILTER_FRONTEND = 'Front-End'
+const FILTER_MOBILE = 'Mobile'
+const FILTER_ALL = 'FILTER_ALL'
+const RADIAL_GROUP = 'tech-type'
+
+let originalTechsList = [] // will contain the original list brought from the server
 
 export default function TechsListPage() {
    const [techsList, setTechsList] = useState([])
@@ -8,15 +16,15 @@ export default function TechsListPage() {
    useEffect(() => {
       getAllTechs()
          .then(res => {
-            const techs = res.data
-            console.log(techs)
-            setTechsList(techs)
+            originalTechsList = res.data
+            setTechsList(originalTechsList)
          })
          .catch(err => console.log(err))
    }, [])
 
    return (
       <>
+         <FilterBox setTechsList={setTechsList} />
          <main>
             {techsList.map((tech, index) => (
                <TechCard tech={tech} key={index} />
@@ -37,5 +45,75 @@ function TechCard({ tech }) {
          <div>{tech.type}</div>
          <img src={tech.logo} alt={tech.tech} />
       </article>
+   )
+}
+
+function FilterBox({ setTechsList }) {
+   const [filterText, setFilterText] = useState('')
+   const [filterType, setFilterType] = useState(FILTER_ALL)
+
+   const applyFilters = (filter = filterType) => {
+      // apply text filter in the original techs array
+      let result = originalTechsList.filter(el =>
+         el.tech.toLowerCase().includes(filterText.toLowerCase())
+      )
+      // filters by type
+      if (filter !== FILTER_ALL) {
+         result = result.filter(el => el.type === filter)
+      }
+
+      setTechsList(result)
+   }
+
+   const handleTextInputChange = e => {
+      setFilterText(e.target.value)
+      applyFilters()
+   }
+
+   const handleRadialGroupChange = e => {
+      setFilterType(e.target.value)
+      applyFilters(e.target.value)
+   }
+
+   return (
+      <form className={styles.filterBox}>
+         <label className={styles.filterBoxTitle}>Filter</label>
+         <label>Tech name:</label>
+         <input
+            type='text'
+            value={filterText}
+            onChange={handleTextInputChange}
+         />
+         <fieldset
+            onChange={handleRadialGroupChange}
+            className={styles.radialGroupContainer}
+         >
+            <label>
+               <input
+                  type='radio'
+                  name={RADIAL_GROUP}
+                  value={FILTER_ALL}
+                  defaultChecked
+               />
+               All
+            </label>
+            <label>
+               <input
+                  type='radio'
+                  name={RADIAL_GROUP}
+                  value={FILTER_FRONTEND}
+               />
+               Front-End
+            </label>
+            <label>
+               <input type='radio' name={RADIAL_GROUP} value={FILTER_BACKEND} />
+               Back-End
+            </label>
+            <label>
+               <input type='radio' name={RADIAL_GROUP} value={FILTER_MOBILE} />
+               Mobile
+            </label>
+         </fieldset>
+      </form>
    )
 }

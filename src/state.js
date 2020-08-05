@@ -6,6 +6,6 @@ export const authenticationState = atom({
       email: '',
       password: '',
       token: '',
-      isAuthenticated: false
+      isAuthenticated: true
    }
 })
