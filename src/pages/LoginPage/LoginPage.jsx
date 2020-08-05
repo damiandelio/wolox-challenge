@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import JSON5 from 'json5'
 import { useRecoilState } from 'recoil'
 import { authenticationState } from '../../state'
 import { logIn } from '../../apiCalls'
@@ -27,7 +26,7 @@ export default function LoginPage() {
 
       logIn({ email, password })
          .then(res => {
-            const { token } = JSON5.parse(res.data)
+            const { token } = res.data
             token && authenticate(token)
          })
          .catch(err => console.log(err))

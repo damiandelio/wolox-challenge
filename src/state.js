@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 export const authenticationState = atom({
-   key: 'isAuthenticatedState',
+   key: 'authenticationState',
    default: {
       email: '',
       password: '',
