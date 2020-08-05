@@ -31,9 +31,12 @@ export default function TechsListPage() {
       <>
          <FilterBox setTechsList={setTechsList} />
          <main>
-            {techsList.map((tech, index) => (
-               <TechCard tech={tech} key={index} />
-            ))}
+            <div>
+               {techsList.map((tech, index) => (
+                  <TechCard tech={tech} key={index} />
+               ))}
+            </div>
+            <div>technologies displayed: {techsList.length}</div>
          </main>
       </>
    )
@@ -71,7 +74,7 @@ function FilterBox({ setTechsList }) {
       if (filter !== FILTER_ALL) {
          result = result.filter(el => el.type === filter)
       }
-
+      // sorts
       if (order !== ORDER_NONE) {
          result = result.sort((a, b) => {
             let ret = a.tech < b.tech ? -1 : 1
@@ -99,7 +102,6 @@ function FilterBox({ setTechsList }) {
 
    const handleOrderChange = e => {
       const value = e.target.value
-      console.log(value)
       setListOrder(value)
       applyFilters({ order: value })
    }
