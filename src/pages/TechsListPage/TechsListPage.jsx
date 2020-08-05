@@ -52,10 +52,10 @@ function FilterBox({ setTechsList }) {
    const [filterText, setFilterText] = useState('')
    const [filterType, setFilterType] = useState(FILTER_ALL)
 
-   const applyFilters = (filter = filterType) => {
+   const applyFilters = ({ filter = filterType, text = filterText }) => {
       // apply text filter in the original techs array
       let result = originalTechsList.filter(el =>
-         el.tech.toLowerCase().includes(filterText.toLowerCase())
+         el.tech.toLowerCase().includes(text.toLowerCase())
       )
       // filters by type
       if (filter !== FILTER_ALL) {
@@ -66,13 +66,15 @@ function FilterBox({ setTechsList }) {
    }
 
    const handleTextInputChange = e => {
-      setFilterText(e.target.value)
-      applyFilters()
+      const value = e.target.value
+      setFilterText(value)
+      applyFilters({ text: value })
    }
 
    const handleRadialGroupChange = e => {
-      setFilterType(e.target.value)
-      applyFilters(e.target.value)
+      let value = e.target.value
+      setFilterType(value)
+      applyFilters({ filter: value })
    }
 
    return (
