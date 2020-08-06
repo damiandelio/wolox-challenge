@@ -1,1 +1,45 @@
-// @import '../../styles/extends';
+@import '../../styles/extends';
+
+.main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+}
+
+.container {
+   @extend %container;
+}
+
+.presentationContainer {
+   @extend %container-with-padding;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   height: 38.5rem;
+   background-image: url('../../images/backgrounds/Bg_Header.png');
+   background-repeat: no-repeat;
+   background-position: center;
+
+   //position: relative;
+
+   h2 {
+      font-size: 2.5rem;
+      font-weight: var(--font-regular);
+      color: var(--color-dark-blue);
+      line-height: 3.2rem;
+
+      .woloxText {
+         font-weight: var(--font-bold);
+         color: var(--color-green);
+      }
+   }
+
+   img {
+      /* position: absolute;
+      right: 0; */
+      align-self: flex-end;
+      transform: scaleX(-1);
+      margin-left: 10rem;
+   }
+}

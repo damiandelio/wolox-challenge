@@ -1,27 +1,33 @@
 /* Containers */
 %container {
    width: 100%;
-   max-width: 76rem;
+   max-width: 85.25rem;
+}
+
+%container-with-padding {
+   @extend %container;
+   padding: 0 4.5rem;
 }
 
 /* Buttons */
 %base-button {
    padding: 0.7rem 4rem;
    border-radius: 5rem;
-   font-weight: var(--font-bold);
+   font-size: 0.9rem;
+   font-weight: var(--font-semi-bold);
 }
 
 %button-outline {
    @extend %base-button;
-   color: var(--blue);
-   border: 1px solid var(--blue);
-   background: none;
+   color: var(--color-blue);
+   border: 1px solid var(--color-blue);
+   background-color: #fff;
 }
 
 %button-fill {
    @extend %base-button;
    color: #fff;
-   background: var(--blue);
+   background-color: var(--color-blue);
 }
 
 /* */
