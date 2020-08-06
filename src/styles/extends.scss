@@ -1,0 +1,30 @@
+/* Containers */
+%container {
+   width: 100%;
+   max-width: 76rem;
+}
+
+/* Buttons */
+%base-button {
+   padding: 0.7rem 4rem;
+   border-radius: 5rem;
+   font-weight: var(--font-bold);
+}
+
+%button-outline {
+   @extend %base-button;
+   color: var(--blue);
+   border: 1px solid var(--blue);
+   background: none;
+}
+
+%button-fill {
+   @extend %base-button;
+   color: #fff;
+   background: var(--blue);
+}
+
+/* */
+%elevation {
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

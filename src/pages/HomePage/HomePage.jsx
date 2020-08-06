@@ -1,6 +1,12 @@
 import React from 'react'
-// import styles from './HomePage.module.scss'
+import Header from '../../components/Header/Header'
+import styles from './HomePage.module.scss'
 
 export default function HomePage() {
-   return <>HomePage</>
+   return (
+      <>
+         <Header />
+         <main className={styles.main}></main>
+      </>
+   )
 }

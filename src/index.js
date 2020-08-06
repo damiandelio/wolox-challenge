@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { RecoilRoot } from 'recoil'
 import * as serviceWorker from './serviceWorker'
 import Router from './route'
-import './globals.scss'
+import './styles/globals.scss'
 
 ReactDOM.render(
    <React.StrictMode>
