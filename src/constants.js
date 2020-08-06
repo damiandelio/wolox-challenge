@@ -1,7 +1,8 @@
-const CONSTANTS = {
-   /*
-     Constans here
-   */
-}
+// Local Storage
+export const STORAGE_SESSION_KEY = 'session'
 
-export default CONSTANTS
+export const ROUTES = {
+   HOME: '/',
+   LOGIN: '/login',
+   TECHS_LIST: '/techs'
+}

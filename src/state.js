@@ -1,11 +1,7 @@
 import { atom } from 'recoil'
+import { STORAGE_SESSION_KEY } from './constants'
 
-export const authenticationState = atom({
-   key: 'authenticationState',
-   default: {
-      email: '',
-      password: '',
-      token: '',
-      isAuthenticated: true
-   }
+export const sessionTokenState = atom({
+   key: 'sessionTokenState',
+   default: localStorage.getItem(STORAGE_SESSION_KEY)
 })
