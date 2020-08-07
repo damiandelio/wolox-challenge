@@ -22,11 +22,7 @@
    background-position: center;
 
    h2 {
-      font-size: 2.6rem;
-      font-weight: var(--font-regular);
-      color: var(--color-dark-blue);
-      line-height: 3.2rem;
-
+      @extend %subtitle;
       .woloxText {
          font-weight: var(--font-bold);
          color: var(--color-green);
@@ -74,8 +70,61 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      flex-grow: 2;
       height: 26rem;
       text-align: center;
+   }
+
+   .woloxers {
+      flex-grow: 3;
+      flex-direction: column;
+      background-image: url('../../images/img_woloxer.png');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      h1 {
+         font-size: 3.3rem;
+         font-weight: var(--font-bold);
+         color: var(--color-blue);
+         span {
+            color: var(--color-green);
+         }
+      }
+
+      p {
+         display: flex;
+         align-items: center;
+         color: #fff;
+         font-size: 1.3rem;
+         font-weight: var(--font-regular);
+         margin: 3rem 0 1rem 0;
+      }
+
+      // Twitter ico
+      svg {
+         font-size: 2rem;
+         margin-right: 0.5rem;
+      }
+
+      button {
+         @extend %button-outline;
+         font-size: 1.3rem;
+         font-weight: var(--font-medium);
+         color: #fff;
+         border-width: 2px;
+      }
+   }
+
+   h2 {
+      @extend %subtitle;
+      font-weight: var(--font-medium);
+
+      strong {
+         font-weight: var(--font-bold);
+         color: var(--color-blue);
+         span {
+            color: var(--color-green);
+         }
+      }
    }
 }

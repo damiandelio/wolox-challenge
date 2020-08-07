@@ -1,4 +1,5 @@
 import React from 'react'
+import { GrTwitter } from 'react-icons/gr'
 import Header from '../../components/Header/Header'
 import { IlustraHero, IlustraHero2x, IlustraHero3x } from '../../images'
 import { ReactComponent as IcTecnologys } from '../../svgs/Ic_Tecnologys.svg'
@@ -39,15 +40,29 @@ export default function HomePage() {
                   <IcTecnologys />
                </div>
                <div className={styles.woloxersBanner}>
-                  <div></div>
-                  <div>
+                  <div className={styles.woloxers}>
+                     <h1>
+                        <span>350 + </span>Woloxers
+                     </h1>
                      <p>
+                        <GrTwitter />
+                        @Wolox
+                     </p>
+                     <a href='https://twitter.com/Wolox'>
+                        <button>Siguenos</button>
+                     </a>
+                  </div>
+                  <div>
+                     <h2>
                         Trabajamos para
                         <br />
-                        convertir ideas en
+                        <strong>
+                           convertir <span>ideas </span>
+                        </strong>
+                        en
                         <br />
                         productos.
-                     </p>
+                     </h2>
                   </div>
                </div>
             </div>
