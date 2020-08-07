@@ -45,7 +45,7 @@
 
 .technologiesContainer {
    @extend %container-with-padding;
-   @extend %appear-late;
+   @extend %animation-appear-late;
    display: flex;
    justify-content: space-between;
    align-items: center;
