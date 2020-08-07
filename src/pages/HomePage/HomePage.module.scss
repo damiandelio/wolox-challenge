@@ -47,10 +47,7 @@
    margin-top: 6rem;
 
    p {
-      font-size: 2rem;
-      font-weight: var(--font-medium);
-      line-height: 2.4rem;
-      color: var(--color-dark-blue);
+      @extend %paragraph;
    }
 
    svg {
@@ -125,6 +122,49 @@
          span {
             color: var(--color-green);
          }
+      }
+   }
+}
+
+.benefitsTitle {
+   @extend %paragraph;
+   width: 100%;
+   text-align: center;
+   margin: 3rem 0;
+   font-weight: var(--font-medium);
+   span {
+      color: var(--color-blue);
+   }
+}
+
+.benefitsContainer {
+   @extend %container-with-padding;
+
+   section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 5rem 0;
+      padding: 1rem;
+      box-shadow: 0 15px 15px -18px rgba(0, 0, 0, 0.3);
+   }
+
+   .benefitsCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0.5rem;
+
+      svg {
+         width: 6rem;
+         height: 6rem;
+      }
+
+      span {
+         font-size: 1.2rem;
+         font-weight: var(--font-semi-bold);
+         margin: 1.8rem 0 4rem 0;
+         text-align: center;
       }
    }
 }

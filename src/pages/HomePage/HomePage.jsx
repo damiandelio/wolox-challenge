@@ -2,7 +2,15 @@ import React from 'react'
 import { GrTwitter } from 'react-icons/gr'
 import Header from '../../components/Header/Header'
 import { IlustraHero, IlustraHero2x, IlustraHero3x } from '../../images'
-import { ReactComponent as IcTecnologys } from '../../svgs/Ic_Tecnologys.svg'
+import {
+   IcTecnologys,
+   IcHour,
+   IcBrain,
+   IcDrinkSnacks,
+   IcHomeOffice,
+   IcLaptop,
+   IcWorkshops
+} from '../../svgs'
 import styles from './HomePage.module.scss'
 
 export default function HomePage() {
@@ -65,8 +73,46 @@ export default function HomePage() {
                      </h2>
                   </div>
                </div>
+               <p className={styles.benefitsTitle}>
+                  Entre los beneficios que ofrecemos se encuentran
+                  <span>{' ;)'}</span>
+               </p>
+               <div className={styles.benefitsContainer}>
+                  <section>
+                     <BenefitsCard
+                        Icon={<IcHour />}
+                        text='Flexibilidad<br>Horaria'
+                     />
+                     <BenefitsCard Icon={<IcHomeOffice />} text='Home Office' />
+                     <BenefitsCard
+                        Icon={<IcWorkshops />}
+                        text='Capacitaciones<br>y workshops'
+                     />
+                     <BenefitsCard
+                        Icon={<IcDrinkSnacks />}
+                        text='Snacks, frutas<br>y bebidas gratis'
+                     />
+                     <BenefitsCard
+                        Icon={<IcLaptop />}
+                        text='Semana<br>Remota'
+                     />
+                     <BenefitsCard
+                        Icon={<IcBrain />}
+                        text='Trabajar<br>en ultimas<br>tecnologías'
+                     />
+                  </section>
+               </div>
             </div>
          </main>
       </>
+   )
+}
+
+function BenefitsCard({ Icon, text }) {
+   return (
+      <div className={styles.benefitsCard}>
+         {Icon}
+         <span dangerouslySetInnerHTML={{ __html: text }} />
+      </div>
    )
 }
