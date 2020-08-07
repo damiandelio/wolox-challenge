@@ -31,14 +31,16 @@ export default function TechsListPage() {
    return (
       <>
          <Header withMargin />
-         <FilterBox setTechsList={setTechsList} />
-         <main>
-            <div>
+         <main className={styles.main}>
+            <FilterBox setTechsList={setTechsList} />
+            <div className={styles.techCardsContainer}>
                {techsList.map((tech, index) => (
                   <TechCard tech={tech} key={index} />
                ))}
             </div>
-            <div>technologies displayed: {techsList.length}</div>
+            <div className={styles.techsCounter}>
+               technologies displayed: <div>{techsList.length}</div>
+            </div>
          </main>
       </>
    )
@@ -46,14 +48,18 @@ export default function TechsListPage() {
 
 function TechCard({ tech }) {
    return (
-      <article>
-         <h2>{tech.tech}</h2>
-         <div>{tech.year}</div>
-         <div>{tech.author}</div>
-         <div>{tech.license}</div>
-         <div>{tech.language}</div>
-         <div>{tech.type}</div>
-         <img src={tech.logo} alt={tech.tech} />
+      <article className={styles.techCard}>
+         <div className={styles.techImgContainer}>
+            <img src={tech.logo} alt={tech.tech} />
+         </div>
+         <div className={styles.techDescription}>
+            <h2>{tech.tech}</h2>
+            <div>{tech.language}</div>
+            <div>{tech.author}</div>
+            <div>{tech.type}</div>
+            <div>{tech.license}</div>
+            <div>{tech.year}</div>
+         </div>
       </article>
    )
 }

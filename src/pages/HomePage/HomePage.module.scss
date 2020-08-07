@@ -129,9 +129,10 @@
 .benefitsTitle {
    @extend %paragraph;
    width: 100%;
-   text-align: center;
-   margin: 3rem 0;
+   margin: 7rem 0 5rem 0;
    font-weight: var(--font-medium);
+   text-align: center;
+
    span {
       color: var(--color-blue);
    }
@@ -144,8 +145,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      margin: 5rem 0;
-      padding: 1rem;
+      margin-bottom: 5rem;
       box-shadow: 0 15px 15px -18px rgba(0, 0, 0, 0.3);
    }
 
