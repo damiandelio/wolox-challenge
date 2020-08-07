@@ -30,7 +30,7 @@
                 <tspan x="136.205" y="274">React Native</tspan>
             </text>
             <text id="Android" font-size="50" fill="#A3CC39">
-                <tspan x="373.292" y="355">Android</tspan>
+                <tspan x="369" y="355">Android</tspan>
             </text>
             <text id="iOS" font-size="50" fill="#9B9B9B">
                 <tspan x="0.24" y="270">iOS</tspan>

@@ -59,3 +59,70 @@
 %transition-hover-up:hover {
    transform: translateY(-0.15rem);
 }
+
+/* Animations */
+%animation-appear-right {
+   animation: appear-right 1s ease-in-out;
+}
+
+@keyframes appear-right {
+   0% {
+      opacity: 0;
+      //transform: translate3d(7rem, 0, 0)
+      position: relative;
+      right: -7rem;
+   }
+   100% {
+      opacity: 1;
+      //transform: translate3d(0, 0, 0)
+      position: relative;
+      right: 0;
+   }
+}
+
+%animation-appear-left {
+   animation: appear-left 1.5s ease-in-out;
+}
+
+@keyframes appear-left {
+   0% {
+      opacity: 0;
+   }
+   20% {
+      opacity: 0;
+      transform: translate3d(-7rem, 0, 0);
+   }
+   100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+   }
+}
+
+%appear-late {
+   animation: appear-late 2s ease-in-out;
+}
+
+@keyframes appear-late {
+   0% {
+      opacity: 0;
+   }
+   30% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 100%;
+   }
+}
+
+// animations aren't displayed in mobile
+@media only screen and (max-width: 40rem) {
+   %animation-appear-right {
+      animation: unset;
+   }
+   %animation-appear-left {
+      animation: unset;
+   }
+   %appear-late {
+      animation: unset;
+   }
+}

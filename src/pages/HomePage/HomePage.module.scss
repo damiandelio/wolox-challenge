@@ -23,6 +23,8 @@
 
    h2 {
       @extend %subtitle;
+      @extend %animation-appear-left;
+
       .woloxText {
          font-weight: var(--font-bold);
          color: var(--color-green);
@@ -33,6 +35,8 @@
       align-self: flex-end;
       transform: scaleX(-1);
       margin-right: 6rem;
+      @extend %animation-appear-right;
+
       img {
          width: 26.25rem;
       }
@@ -41,6 +45,7 @@
 
 .technologiesContainer {
    @extend %container-with-padding;
+   @extend %appear-late;
    display: flex;
    justify-content: space-between;
    align-items: center;

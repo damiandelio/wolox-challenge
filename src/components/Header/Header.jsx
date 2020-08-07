@@ -19,7 +19,7 @@ export default function Header({ withMargin }) {
                <div>
                   <Link to={ROUTES.HOME}>Inicio</Link>
                   <Link to={ROUTES.TECHS_LIST}>Tecnologías</Link>
-                  <Link to={'/benefits'}>Beneficions</Link>
+                  <Link to={'/benefits'}>Beneficios</Link>
                   <Link to={'/requirements'}>Requerimientos</Link>
                   {!sessionToken && (
                      <Link to={ROUTES.LOGIN} className={styles.buttonLink}>
