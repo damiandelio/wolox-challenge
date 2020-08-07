@@ -6,7 +6,13 @@
 
 %container-with-padding {
    @extend %container;
-   padding: 0 4.5rem;
+   padding: 0 1rem;
+}
+
+@media only screen and (min-width: 50rem) {
+   %container-with-padding {
+      padding: 0 5rem;
+   }
 }
 
 /* Buttons */

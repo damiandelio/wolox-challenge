@@ -5,6 +5,7 @@
    --color-blue: #2aa7df;
    --color-dark-blue: #1b263c;
    --color-semi-black: #1d263a;
+   --color-grey: #f2f5fa;
 
    --font-thin: 100;
    --font-extra-light: 200;
@@ -29,6 +30,7 @@ body {
    font-family: 'Montserrat', sans-serif;
    font-weight: var(--font-regular);
    font-style: normal;
+   color: var(--color-dark-blue);
 }
 
 button {
@@ -71,13 +73,13 @@ strong {
    font-weight: 400;
 }
 
-/* @font-face {
+@font-face {
    font-family: 'Montserrat';
    src: url('../fonts/Montserrat/Montserrat-Medium.woff') format('woff'),
       url('../fonts/Montserrat/Montserrat-Medium.woff2') format('woff2');
    font-style: normal;
    font-weight: 500;
-} */
+}
 
 @font-face {
    font-family: 'Montserrat';
