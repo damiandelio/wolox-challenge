@@ -21,6 +21,7 @@
    border-radius: 5rem;
    font-size: 0.9rem;
    font-weight: var(--font-semi-bold);
+   @extend %transition-hover-up;
 }
 
 %button-outline {
@@ -49,4 +50,12 @@
    font-weight: var(--font-medium);
    line-height: 2.4rem;
    color: var(--color-dark-blue);
+}
+
+/* Transitions */
+%transition-hover-up {
+   transition: transform 350ms ease-in-out;
+}
+%transition-hover-up:hover {
+   transform: translateY(-0.15rem);
 }
