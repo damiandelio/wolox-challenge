@@ -1,11 +1,7 @@
 import React, { Suspense, lazy } from 'react'
-import {
-   Redirect,
-   Route,
-   BrowserRouter as Router,
-   Switch
-} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
+import { useHistory } from 'react-router-dom'
 import { sessionTokenState } from './state'
 import { ROUTES } from './constants'
 
@@ -35,8 +31,14 @@ const router = (
 
 function PrivateRoute(props) {
    const sessionToken = useRecoilValue(sessionTokenState)
+   const history = useHistory()
    // if the user isn't logged, redirects to login page
-   return sessionToken ? <Route {...props} /> : <Redirect to={ROUTES.LOGIN} />
+   if (!sessionToken) {
+      history.replace(ROUTES.LOGIN)
+      return null
+   }
+
+   return <Route {...props} />
 }
 
 export default router

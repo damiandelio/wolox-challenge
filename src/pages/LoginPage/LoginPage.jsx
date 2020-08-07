@@ -21,7 +21,7 @@ export default function LoginPage() {
 
    useEffect(() => {
       // if the user is logged, redirects to techs list page
-      sessionToken && history.push(ROUTES.TECHS_LIST)
+      sessionToken && history.replace(ROUTES.TECHS_LIST)
    }, []) // eslint-disable-line
 
    const handleSubmit = e => {
@@ -33,7 +33,7 @@ export default function LoginPage() {
             if (token) {
                setSessionToken(token)
                isSaveSession && localStorage.setItem(STORAGE_SESSION_KEY, token)
-               history.push(ROUTES.TECHS_LIST)
+               history.replace(ROUTES.TECHS_LIST)
             }
          })
          .catch(err => console.log(err))
