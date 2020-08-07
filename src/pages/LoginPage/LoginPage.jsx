@@ -5,12 +5,16 @@ import { sessionTokenState } from '../../state'
 import { logIn } from '../../apiCalls'
 import { ROUTES, STORAGE_SESSION_KEY } from '../../constants'
 import styles from './LoginPage.module.scss'
+import { isValidEmail } from './../../utils'
+
+const MIN_PASSWORD_LENGHT = 4
 
 export default function LoginPage() {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [isSaveSession, setIsSaveSession] = useState(false)
    const [sessionToken, setSessionToken] = useRecoilState(sessionTokenState)
+   const [isValidForm, setIsValidForm] = useState(false)
 
    const history = useHistory()
 
@@ -34,6 +38,10 @@ export default function LoginPage() {
          .catch(err => console.log(err))
    }
 
+   function validateForm({ e = email, p = password }) {
+      setIsValidForm(isValidEmail(e) > 0 && p.length >= MIN_PASSWORD_LENGHT)
+   }
+
    return (
       <>
          <main className={styles.main}>
@@ -44,7 +52,11 @@ export default function LoginPage() {
                   type='email'
                   placeholder='email@example.com'
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => {
+                     const newEmail = e.target.value
+                     setEmail(newEmail)
+                     validateForm({ e: newEmail })
+                  }}
                   className={styles.textInput}
                />
                <label>Password:</label>
@@ -52,7 +64,11 @@ export default function LoginPage() {
                   type='password'
                   placeholder='password'
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={e => {
+                     const newPassword = e.target.value
+                     setPassword(newPassword)
+                     validateForm({ p: newPassword })
+                  }}
                   className={styles.textInput}
                />
                <label>
@@ -63,7 +79,9 @@ export default function LoginPage() {
                   />
                   Stay logged in
                </label>
-               <button type='submit'>Log in</button>
+               <button disabled={!isValidForm} type='submit'>
+                  Log in
+               </button>
             </form>
          </main>
       </>
