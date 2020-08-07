@@ -5,6 +5,9 @@ To run this project use Yarn:
 yarn install && yarn start
 ```
 
+# Preview
+The project is deployed at [wolox-challenge.vercel.app](https://wolox-challenge.vercel.app/) for preview.
+
 ## Libraries used
 - Recoil
 - Sass
