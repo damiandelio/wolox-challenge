@@ -7,7 +7,8 @@
    top: 0;
    left: 0;
    width: 100%;
-   padding: 3.5rem 0 2rem 0;
+   height: var(--header-height, 9.5rem);
+   z-index: 9999;
 
    nav {
       @extend %container-with-padding;
@@ -34,4 +35,8 @@
          }
       }
    }
+}
+
+.withMargin {
+   margin-top: var(--header-height);
 }

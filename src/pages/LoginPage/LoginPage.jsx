@@ -4,8 +4,9 @@ import { useHistory } from 'react-router-dom'
 import { sessionTokenState } from '../../state'
 import { logIn } from '../../apiCalls'
 import { ROUTES, STORAGE_SESSION_KEY } from '../../constants'
-import styles from './LoginPage.module.scss'
 import { isValidEmail } from './../../utils'
+import Header from '../../components/Header/Header'
+import styles from './LoginPage.module.scss'
 
 const MIN_PASSWORD_LENGHT = 4
 
@@ -44,6 +45,7 @@ export default function LoginPage() {
 
    return (
       <>
+         <Header />
          <main className={styles.main}>
             <h2>Log In</h2>
             <form onSubmit={handleSubmit} className={styles.loginBox}>

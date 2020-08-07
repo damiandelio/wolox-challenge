@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getAllTechs } from '../../apiCalls'
+import Header from '../../components/Header/Header'
 import styles from './TechsListPage.module.scss'
 
 const RADIAL_GROUP = 'tech-type'
@@ -29,6 +30,7 @@ export default function TechsListPage() {
 
    return (
       <>
+         <Header withMargin />
          <FilterBox setTechsList={setTechsList} />
          <main>
             <div>
