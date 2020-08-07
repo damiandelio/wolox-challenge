@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
+import { GrMenu } from 'react-icons/gr'
 import { sessionTokenState } from '../../state'
 import { ROUTES } from '../../constants'
 import logo from '../../images/logo_full_color.svg'
@@ -26,6 +27,9 @@ export default function Header({ withMargin }) {
                      </Link>
                   )}
                </div>
+               <button className={styles.menuButton}>
+                  <GrMenu />
+               </button>
             </nav>
          </header>
       </>

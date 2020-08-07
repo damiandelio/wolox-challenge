@@ -16,8 +16,12 @@
       justify-content: space-between;
       align-items: center;
 
+      div {
+         display: none;
+      }
+
       img {
-         width: 12rem;
+         width: 9rem;
       }
 
       a {
@@ -40,4 +44,31 @@
 
 .withMargin {
    margin-top: var(--header-height);
+}
+
+.menuButton {
+   display: flex;
+   align-items: center;
+   font-size: 1.5rem;
+   padding: 0.3rem;
+   background: none;
+   border: none;
+}
+
+@media only screen and (min-width: 60rem) {
+   .header {
+      nav {
+         img {
+            width: 12rem;
+         }
+
+         div {
+            display: flex;
+         }
+      }
+   }
+
+   .menuButton {
+      display: none;
+   }
 }
