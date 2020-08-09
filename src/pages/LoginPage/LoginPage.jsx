@@ -45,7 +45,7 @@ export default function LoginPage() {
 
    return (
       <>
-         <Header />
+         <Header withMargin />
          <main className={styles.main}>
             <h2>Log In</h2>
             <form onSubmit={handleSubmit} className={styles.loginBox}>
